@@ -28,7 +28,7 @@ module.exports = {
       exclude: /node_modules/
     }, {
       test: /\.css$/,
-      use: ExtractTextPlugin.extract(['css-loader?modules,localIdentName="[hash:base64:6]",camelCase'])
+      use: ExtractTextPlugin.extract(['css-loader?modules,localIdentName="[name]-[local]-[hash:base64:6]",camelCase'])
     }]
   },
   devtool: 'source-map',
@@ -49,7 +49,10 @@ module.exports = {
       from: resolve(__dirname, '../src/icons/'),
       to: resolve(__dirname, '../dist/')
     }]),
-    new ExtractTextPlugin('styles.[chunkhash:6].css'),
+    new ExtractTextPlugin({
+      filename: 'styles.[chunkhash:6].css',
+      allChunks: true
+    }),
     new StyleExtHtmlWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
