@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>My App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aletta</title>
+
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152.png">
+
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+
+    <meta name="msapplication-starturl" content="/">
+    <meta name="msapplication-TileColor" content="#24A3CF">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+
+    <meta name="application-name" content="Aletta">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#24A3CF">
+    <meta name="application-name" content="Aletta">
+
+    <link rel="manifest" href="manifest.json">
   </head>
   <body>
     <div id="app"></div>
+    <%=htmlWebpackPlugin.files.webpackManifest%>
   </body>
 </html>

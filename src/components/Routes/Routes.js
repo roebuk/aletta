@@ -1,22 +1,19 @@
 import React from 'react'
 import { Route, Switch } from 'react-router'
 
-import Home from '../Home/Home'
-import About from '../About/About'
-import PostDetail from '../PostDetail/PostDetail'
-import NotFound from '../NotFound/NotFound'
+import AsyncRoute from '../AsyncRoute/AsyncRoute'
 
 import posts from '../../../blog-posts.json'
 
 const Routes = () => (
   <Switch>
-    <Route exact path='/' component={() => <Home posts={posts.posts} />} />
-    <Route path='/about' component={About} />
+    <Route exact path='/' component={props => <AsyncRoute props={Object.assign({}, props, posts)} loadingPromise={System.import('../Home/Home')} />} />
+    <Route path='/about' component={props => <AsyncRoute props={props} loadingPromise={System.import('../About/About')} />} />
     <Route path='/post/:slug' component={props => {
       const post = posts.posts.filter(post => props.match.params.slug === post.slug)
-      return <PostDetail post={post[0]} />
+      return <AsyncRoute props={Object.assign({}, props, {post: post[0]})} loadingPromise={System.import('../PostDetail/PostDetail')} />
     }} />
-    <Route component={NotFound} />
+    <Route component={props => <AsyncRoute props={props} loadingPromise={System.import('../NotFound/NotFound')} />} />
   </Switch>
 )
 
