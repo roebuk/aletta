@@ -4,6 +4,8 @@ const DashboardPlugin = require('webpack-dashboard/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OfflinePlugin = require('offline-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin')
 const webpack = require('webpack')
 
 
@@ -42,13 +44,21 @@ module.exports = {
     new CleanWebpackPlugin(['dist'], {
       root: resolve(__dirname, '..')
     }),
-    new ExtractTextPlugin('styles.[chunkhash:6].css'),
+    new CopyWebpackPlugin([{
+      from: resolve(__dirname, '../src/icons/'),
+      to: resolve(__dirname, '../dist/')
+    }]),
+    new ExtractTextPlugin({
+      filename: 'styles.[chunkhash:6].css',
+      allChunks: true
+    }),
+    new StyleExtHtmlWebpackPlugin(),
     new HtmlWebpackPlugin({
-      filename: '200.html',
+      filename: 'index.html',
       template: `./index.html`
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor'
+      names: ['vendor', 'manifest']
     }),
     new OfflinePlugin()
   ]

@@ -3,8 +3,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "predeploy": "webpack -p --config=webpack/webpack.prod.js",
-    "deploy": "surge --project dist --domain https://aletta.surge.sh",
+    "build": "webpack -p --config=webpack/webpack.prod.js",
     "start": "webpack-dashboard -- webpack-dev-server --config=webpack/webpack.dev.js",
     "test": "jest"
   },
@@ -14,6 +13,7 @@
     "babel-plugin-transform-es2015-modules-commonjs": "^6.22.0",
     "babel-preset-react": "^6.22.0",
     "clean-webpack-plugin": "^0.1.15",
+    "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.26.1",
     "enzyme": "^2.7.1",
     "enzyme-to-json": "^1.4.5",
@@ -32,6 +32,7 @@
     "react-router-dom": "next",
     "standard": "^8.6.0",
     "standard-loader": "^5.0.0",
+    "style-ext-html-webpack-plugin": "^3.2.0",
     "style-loader": "^0.13.1",
     "surge": "^0.18.0",
     "webpack": "2.2.1",

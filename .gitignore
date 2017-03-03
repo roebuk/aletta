@@ -7,3 +7,5 @@ node_modules
 coverage
 
 dist
+
+*.tar.gz
