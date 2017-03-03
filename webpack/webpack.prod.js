@@ -4,7 +4,6 @@ const DashboardPlugin = require('webpack-dashboard/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OfflinePlugin = require('offline-plugin')
-const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin')
 const webpack = require('webpack')
@@ -59,10 +58,7 @@ module.exports = {
       template: `./index.html`
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor', 'manifest'],
-    }),
-    new InlineManifestWebpackPlugin({
-        name: 'webpackManifest'
+      names: ['vendor', 'manifest']
     }),
     new OfflinePlugin()
   ]
